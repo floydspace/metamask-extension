@@ -1,4 +1,4 @@
-import { MINUTE, SECOND } from '../../../shared/constants/time';
+import { MINUTE } from '../../../shared/constants/time';
 import getFetchWithTimeout from '../../../shared/modules/fetch-with-timeout';
 import { getStorageItem, setStorageItem } from './storage-helpers';
 
