@@ -17,7 +17,6 @@ import {
 import {
   CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP,
   NETWORK_TO_NAME_MAP,
-  UNKNOWN_NETWORK,
 } from '../../../../../shared/constants/network';
 
 export default function ConfirmationNetworkSwitch({ newNetwork }) {
@@ -39,17 +38,15 @@ export default function ConfirmationNetworkSwitch({ newNetwork }) {
         className="confirmation-network-switch__icon"
         display={DISPLAY.BLOCK}
       >
-        <SiteIcon
-          icon={
-            CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP[
-              currentNetwork.chainId in CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP
-                ? currentNetwork.chainId
-                : UNKNOWN_NETWORK
-            ]
-          }
-          name={currentNetwork.nickname}
-          size={64}
-        />
+        {currentNetwork.chainId in CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP ? (
+          <SiteIcon
+            icon={CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP[currentNetwork.chainId]}
+            name={currentNetwork.nickname}
+            size={64}
+          />
+        ) : (
+          <i className="fa fa-question-circle fa-4x" />
+        )}
         <Typography
           color={COLORS.TEXT_DEFAULT}
           variant={TYPOGRAPHY.H6}
@@ -76,17 +73,15 @@ export default function ConfirmationNetworkSwitch({ newNetwork }) {
         className="confirmation-network-switch__icon"
         display={DISPLAY.BLOCK}
       >
-        <SiteIcon
-          icon={
-            CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP[
-              newNetwork.chainId in CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP
-                ? newNetwork.chainId
-                : UNKNOWN_NETWORK
-            ]
-          }
-          name={newNetwork.name}
-          size={64}
-        />
+        {newNetwork.chainId in CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP ? (
+          <SiteIcon
+            icon={CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP[newNetwork.chainId]}
+            name={newNetwork.name}
+            size={64}
+          />
+        ) : (
+          <i className="fa fa-question-circle fa-4x" />
+        )}
         <Typography
           color={COLORS.TEXT_DEFAULT}
           variant={TYPOGRAPHY.H6}
